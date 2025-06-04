@@ -6,9 +6,9 @@ A full-stack portfolio project that simulates a platform for plant care creators
 
 ## ✅ Phase 1 – Backend Setup
 
-- [] Initialize Express project structure
-- [] Install core dependencies (Express, Sequelize, dotenv, cors)
-- [] Design database schema: BlogPost, Course, Podcast
+- [X] Initialize Express project structure
+- [X] Install core dependencies
+- [] Design database schema: BlogPost, Course, Podcast ...
 - [] Connect to PostgreSQL with Sequelize
 - [] Create RESTful routes for Blog CRUD
 - [ ] Create RESTful routes for Course and Podcast

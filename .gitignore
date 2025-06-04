@@ -42,4 +42,4 @@ yarn-error.log*
 
 # Misc
 *.bak
-
+*.pages
