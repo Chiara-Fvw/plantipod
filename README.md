@@ -101,13 +101,30 @@ git clone https://github.com/your-username/plantipod.git
 cd plantipod
 ```
 
-### 2. Backend Setup
+### 2. Backend & Database Setup
+Follow these steps to prepare and run the backend along with your PostgreSQL database.
+
+#### 2.1 Prepare Environment Variables
+Create a .env file inside the backend folder based on .env.example and set your PostgreSQL credentials:
+```env
+DB_USER=your_db_user
+DB_PASSWORD=your_db_password
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=plantipod
+PORT=3001
+```
+
+If you use no password locally, you can leave DB_PASSWORD empty but it’s safer to have one.
+
+#### 2.2 Run Setup Commands
+From the backend directory, run these commands in order:
 
 ```bash
-cd backend
-npm install
-# Create a `.env` file with DB credentials (see .env.example)
-npm run dev
+npm run pgstart      # Start PostgreSQL service (macOS)
+npm run db:init      # Run schema.sql to create tables
+npm run db:seed     # Run seed.sql to insert sample data
+npm run dev         # Start backend server with nodemon
 ```
 
 ### 3. Frontend Setup
