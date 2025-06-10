@@ -1,6 +1,14 @@
-import app from './app.js'
-const PORT = process.env.PORT || 3000;
+import app from './app.js';
+import pool from './db/init.js';
+import config from './utils/config.js';
+import logger from './utils/logger.js';
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+pool.query('SELECT NOW ()')
+  .then(res => logger.info(`✅ PostgreSQL is ready!`))
+  .catch(err => logger.error('❌ PostgreSQL connection error:', err));
+
+
+app.listen(config.PORT, () => {
+  logger.info(`Server running on port ${config.PORT}`);
 });
+

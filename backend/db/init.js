@@ -1,12 +1,15 @@
 import pkg from 'pg';
+import config from '../utils/config.js'; 
+import logger from '../utils/logger.js';
+
 const { Pool } = pkg;
 
 const pool = new Pool({
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  host: process.env.DB_HOST,
-  port: 5432,
-  database: process.env.DB_NAME,
+  user: config.DB_USER,
+  password: config.DB_PASSWORD,
+  host: config.DB_HOST,
+  port: config.DB_PORT,
+  database: config.DB_NAME,
 });
 
 export default pool;
