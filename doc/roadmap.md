@@ -8,10 +8,10 @@ A full-stack portfolio project that simulates a platform for plant care creators
 
 - [X] Initialize Express project structure
 - [X] Install core dependencies
-- [] Design database schema: BlogPost, Course, Podcast ...
-- [] Connect to PostgreSQL with Sequelize
-- [] Create RESTful routes for Blog CRUD
-- [ ] Create RESTful routes for Course and Podcast
+- [X] Design database schema: BlogPost, Course, Podcast ...
+- [X] Create RESTful routes for Blog CRUD
+- [X] Create RESTful routes for Course CRUD
+- [X] Create RESTful routes for Podcast CRUD
 
 ---
 
