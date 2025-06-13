@@ -10,6 +10,9 @@ export const courseValidationRules = [
   body('total_duration').notEmpty().withMessage('Course duration must be indicated.')
 ];
 
-export const podcastValidationRoules = [
-  
-]
+export const podcastValidationRules = [
+  body('episode_num').notEmpty().withMessage('Podcast episode must have a number'),
+  body('title').notEmpty().withMessage('Podcast episode must have a title'),
+  body('release_date').notEmpty().withMessage('Must state a realease date.'),
+  body('duration').notEmpty().withMessage('Episode must have a duration.')
+];
