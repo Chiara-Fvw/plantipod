@@ -1,4 +1,3 @@
-import config from './utils/config.js';
 import express from 'express';
 import cors from 'cors';
 import logger from './utils/logger.js';
@@ -12,10 +11,6 @@ app.use(cors());
 app.use('/api/', routes);
 
 logger.info('Plantipod API connected 🫛');
-
-app.get('/', (req, res) => {
-  res.send('Welcome to PlantiPod')
-});
 
 app.get('/favicon.ico', (req, res) => res.status(204).end());
 

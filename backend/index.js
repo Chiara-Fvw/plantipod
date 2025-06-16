@@ -1,5 +1,5 @@
-import app from './app.js';
 import pool from './db/init.js';
+import app from './app.js';
 import config from './utils/config.js';
 import logger from './utils/logger.js';
 
@@ -11,4 +11,3 @@ pool.query('SELECT NOW ()')
 app.listen(config.PORT, () => {
   logger.info(`Server running on port ${config.PORT}`);
 });
-
