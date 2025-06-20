@@ -1,3 +1,6 @@
+import { useState } from "react";
+import Blog from "./components/Blog.js";
+
 const App = () => {
   const handleClick = (section) => {
     alert(`You clicked on ${section}`);
@@ -35,7 +38,7 @@ const App = () => {
             </button>
           </div>
 
-          {/* TITLE + SLOGAN */}
+          {/* TITLE + DESCRIPTION */}
           <div className="flex-1 min-h-[300px] md:min-h-0 flex items-center justify-center px-6 py-8 md:py-2 text-center">
             <div>
               <h1 className="text-6xl font-name text-main mb-[10vh]">Welcome</h1>
