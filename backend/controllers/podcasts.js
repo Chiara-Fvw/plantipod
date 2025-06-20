@@ -8,7 +8,12 @@ const podcastsRouter = express.Router();
 podcastsRouter.get('/', async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM podcasts');
-    const podcasts = result.rows;
+    const podcasts = result.rows.map(podcast => {
+      return {
+        ...podcast,
+        duration: podcast.duration.toString()
+      }
+    });
     res.json(podcasts);
   } catch (err) {
     next(err);
