@@ -1,1 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Limelight&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --color-main: #628C51;        /* Primary green */
+  --color-secondary: #8BA688;   /* Olive-like */
+  --color-special: #FFD95E;     /* Yellow highlight */
+  --color-light: #F0EADC;       /* Instead of white */
+  --color-hover: #39592F;        /* Hover state color */
+
+  --font-name: "Limelight", sans-serif;
+  --font-title: "Montserrat", sans-serif;
+  --font-main: "Quicksand", sans-serif;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-main);
+    /* background-color: var(--color-light); */
+    color: var(--color-main);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-title);
+  }
+  h2 {
+    font-weight: bold;
+  }
+}
+
+.nav-button {
+    @apply flex-1 p-4 flex items-center justify-center transition-all duration-200;
+  }
+
+.nav-button:hover {
+  @apply translate-y-2;
+}
