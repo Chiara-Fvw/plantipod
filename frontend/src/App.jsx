@@ -39,8 +39,8 @@ const App = () => {
           <div className="flex-1 min-h-[300px] md:min-h-0 flex items-center justify-center px-6 py-8 md:py-2 text-center">
             <div>
               <h1 className="text-6xl font-name text-main mb-[10vh]">Welcome</h1>
-              <p className="mt-4 text-lg text-gray-600"> <span className="font-name">Plantipod</span> is your all-in-one hub for everything Plantipod. Dive into our Spotify podcasts, explore Hotmart courses, and get inspired by the blog — all in one easy spot.</p>
-              <p className="mt-4 text-lg text-gray-600">Join our vibrant community to connect, share, and grow with fellow plant lovers. lovers</p>
+              <p className="mt-4 text-lg text-gray-600"> <span className="font-name">Plantipod</span> is your all-in-one hub for everything your plants may need. Dive into our Spotify podcasts, explore Hotmart courses, and get inspired by the blog — all in one easy spot.</p>
+              <p className="mt-4 text-lg text-gray-600">Join our vibrant community to connect, share, and grow with fellow plant lovers.</p>
             </div>
           </div>
         </div>
