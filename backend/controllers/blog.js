@@ -5,9 +5,9 @@ import { validationResult } from 'express-validator';
 
 const blogRouter = express.Router();
 
-blogRouter.get('/', async (req, res) => {
+blogRouter.get('/', async (req, res, next) => {
   try {
-    const result = await pool.query('SELECT * FROM blog_posts');
+    const result = await pool.query('SELECT p.id, p.title, p.created_at, i.url AS image_url FROM blog_posts p LEFT JOIN blog_images i ON p.id = i.blog_id AND i.position = 1 ORDER BY p.created_at DESC');
     const posts = result.rows;
     res.json(posts);
   } catch (err) {
@@ -35,9 +35,9 @@ blogRouter.post('/', blogValidationRules, async (req, res, next) => {
     return res.status(400).json({ errors: errors.array()});
   }
   
-  const {title, description} = req.body;
+  const {title, content} = req.body;
   try {
-    const response = await pool.query(`INSERT INTO blog_posts (title, description) VALUES ($1, $2)`, [title, description]);
+    const response = await pool.query(`INSERT INTO blog_posts (title, content) VALUES ($1, $2) RETURNING *`, [title, content]);
     if (response.rowCount === 0) return res.status(400).json({error: 'Can not create the post.'});
     res.status(201).json(response.rows[0]);
   } catch (err) {
@@ -56,7 +56,7 @@ blogRouter.put('/:id', async (req, res, next) => {
   const fields = updates.map(([key], index) => `${key} = $${index + 1}`).join(', ');
   const values = updates.map(([, value]) => value);
   try {
-    const query = `UPDATE blog_posts SET ${fields} WHERE id = $${values.length + 1}`;
+    const query = `UPDATE blog_posts SET ${fields}, updated_at = CURRENT_TIMESTAMP WHERE id = $${values.length + 1}`;
     values.push(id);
 
     const response = await pool.query(query, values);

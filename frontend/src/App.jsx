@@ -23,7 +23,7 @@ const App = () => {
             <button
               onClick={() => handleClick('Home')}
               className="nav-button">
-              <img src="/img/logo.png" className="max-w-[100px]"/>
+              <img src="/img/logo2.png" className="max-w-[100px]"/>
             </button>
             <button
               onClick={() => handleClick('Blog')}
