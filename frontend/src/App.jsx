@@ -1,13 +1,17 @@
 import { useState } from "react";
-import Blog from "./components/Blog.js";
+import HomeRight from "./components/Home.jsx"
+import BlogRight from "./components/Blog.jsx";
+import CoursesRight from "./components/Courses.jsx";
+import PodcastRight from "./components/Podcast.jsx";
+import LeftContent from "./components/LeftContent.jsx"
 
 const App = () => {
-  const handleClick = (section) => {
-    alert(`You clicked on ${section}`);
+  const [section, setSection] = useState("Home");
+  const handleClick = (newSection) => {
+    setSection(newSection);
   }
   return (
     <main className="flex flex-col md:h-screen">
-
       {/* FULL PAGE CONTENT */}
       <div className="flex-1 flex flex-col md:flex-row md:h-full overflow-auto md:overflow-hidden">
 
@@ -39,34 +43,20 @@ const App = () => {
           </div>
 
           {/* TITLE + DESCRIPTION */}
-          <div className="flex-1 min-h-[300px] md:min-h-0 flex items-center justify-center px-6 py-8 md:py-2 text-center">
-            <div>
-              <h1 className="text-6xl font-name text-main mb-[10vh]">Welcome</h1>
-              <p className="mt-4 text-lg text-gray-600"> <span className="font-name">Plantipod</span> is your all-in-one hub for everything your plants may need. Dive into our Spotify podcasts, explore Hotmart courses, and get inspired by the blog — all in one easy spot.</p>
-              <p className="mt-4 text-lg text-gray-600">Join our vibrant community to connect, share, and grow with fellow plant lovers.</p>
-            </div>
-          </div>
+          <LeftContent section={section} />
         </div>
 
-        {/* RIGHT SIDE: MAIN SECTIONS */}
-        <div className="md:w-1/2 w-full flex flex-col md:h-full">
-          {["Blog", "Podcast", "Courses"].map((item) => (
-            <div
-              key={item}
-              onClick={() => handleClick(item)}
-              className="min-h-[250px] md:min-h-0 md:flex-1 flex items-center justify-center bg-cover bg-center relative cursor-pointer group transform transition-transform duration-300 ease-in-out"
-              style={{ backgroundImage: `url('/img/${item.toLowerCase()}.png')` }}>
-              <div className="relative z-10 bg-white px-6 py-3 rounded-md group-hover:translate-y-2 transition-all duration-300">
-                <h2 className="text-main text-4xl ">{item.toUpperCase()}</h2>
-              </div>
-            </div>
-          ))}
-        </div>
+      {/* RIGHT SIDE: MAIN SECTIONS */}
+        { section === 'Home' && <HomeRight onClick={handleClick}/>}
+        { section === 'Blog' && <BlogRight />}
+        { section === 'Courses' && <CoursesRight />}
+        { section === 'Podcast' && <PodcastRight />}
+
       </div>
 
       {/* BOTTOM CTA */}
       <div
-        onClick={() => handleClick("Community")}
+        onClick={() => alert("Community")}
         className="h-[80px] w-full py-6 flex items-center bg-main text-light text-xl font-semibold">
         {/* Instagram */}
           <div className="w-[80px] flex justify-center items-center border-r border-secondary">
