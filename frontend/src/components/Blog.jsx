@@ -26,9 +26,7 @@ const BlogRight = () => {
         if (!res.ok) throw new Error('Failed to fetch posts.');
         return res.json();        
       })
-      .then(data => {
-        setPosts(data);
-      })
+      .then(data => setPosts(data))
       .catch(err => setError(err.message));
   }, []);
 
