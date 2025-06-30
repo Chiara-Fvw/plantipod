@@ -6,9 +6,9 @@
 TRUNCATE blog_images, blog_posts, podcasts, course_modules, courses RESTART IDENTITY CASCADE;
 
 -- Insert courses
-INSERT INTO courses (title, description, total_duration) VALUES
-('Make Your Own Kokedama', 'Learn the art of creating beautiful kokedama plant arrangements from scratch.', INTERVAL '3 hours'),
-('Take Care of Your Crass Plants', 'Essential care tips and tricks to keep your crass plants healthy and thriving.', INTERVAL '2 hours 30 minutes');
+INSERT INTO courses (title, description, img, total_duration) VALUES
+('Make Your Own Kokedama', 'Learn the art of creating beautiful kokedama plant arrangements from scratch.', '/images/courses/kokedama.png', INTERVAL '3 hours'),
+('Take Care of Your Crass Plants', 'Essential care tips and tricks to keep your crass plants healthy and thriving.','/images/courses/crassPlants.png', INTERVAL '2 hours 30 minutes');
 
 -- Insert podcasts
 INSERT INTO podcasts (episode_num, title, description, release_date, duration) VALUES
