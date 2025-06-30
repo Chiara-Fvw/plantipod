@@ -26,11 +26,11 @@ INSERT INTO blog_posts (title, content) VALUES
 
 -- Insert blog images (2 images per post: real + placeholder)
 INSERT INTO blog_images (blog_id, url, position, alt_text) VALUES
-(1, '/images/blog/indoor-plants.jpg', 1, 'Indoor plants in a cozy living room'),
+(1, '/images/blog/indoor-plants.png', 1, 'Indoor plants in a cozy living room'),
 (1, 'https://via.placeholder.com/600x400?text=Plant+Image+Placeholder', 2, 'Placeholder image for indoor plants'),
 
-(2, '/images/blog/soil-guide.jpg', 1, 'Different types of soil in pots'),
+(2, '/images/blog/soil-guide.png', 1, 'Different types of soil in pots'),
 (2, 'https://via.placeholder.com/600x400?text=Plant+Image+Placeholder', 2, 'Placeholder image for soil guide'),
 
-(3, '/images/blog/watering-plants.jpg', 1, 'Watering a green houseplant'),
+(3, '/images/blog/watering-plants.png', 1, 'Watering a green houseplant'),
 (3, 'https://via.placeholder.com/600x400?text=Plant+Image+Placeholder', 2, 'Placeholder image for watering plants');
