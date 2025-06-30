@@ -17,10 +17,10 @@ A full-stack portfolio project that simulates a platform for plant care creators
 
 ## 🚧 Phase 2 – Frontend (Public Site)
 
-- [] Set up Vite + React project
-- [] Install Axios and React Router
-- [ ] Create homepage layout
-- [ ] Fetch and display blog posts
+- [X] Set up Vite + React project
+- [X] Install Axios and React Router
+- [X] Create homepage layout
+- [X] Fetch and display blog posts
 - [ ] Create detail page for blog post
 - [ ] Mock course and podcast sections
 
