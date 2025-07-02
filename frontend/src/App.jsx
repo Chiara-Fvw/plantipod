@@ -56,22 +56,30 @@ const App = () => {
 
       {/* BOTTOM CTA */}
       <div
-        onClick={() => alert("Community")}
         className="h-[80px] w-full py-6 flex items-center bg-main text-light text-xl font-semibold">
         {/* Instagram */}
-          <div className="w-[80px] flex justify-center items-center border-r border-secondary">
+          <a 
+            href="/under-construction.html"
+            target="_blank"
+            className="w-[80px] flex justify-center items-center border-r border-secondary">
             <img src="/img/instagram.png" className="w-8 h-8 hover:translate-2 transition-all duration-300" alt="Instagram" />
-          </div>
+          </a>
         {/* Pinterest */}
-        <div className="w-[80px] flex justify-center items-center border-r border-secondary">
+        <a 
+          href="/under-construction.html"
+          target="_blank"
+          className="w-[80px] flex justify-center items-center border-r border-secondary">
           <img src="/img/pinterest.png" className="w-8 h-8 hover:translate-2 transition-all duration-300" alt="Pinterest" />
-        </div>
+        </a>
         {/* Join the Community */}
-         <div className="flex-1 flex items-center justify-center gap-2 px-4 py-6 group cursor-pointer ">
+         <a  
+          href="/under-construction.html"
+          target="_blank"
+          className="flex-1 flex items-center justify-center gap-2 px-4 py-6 group cursor-pointer ">
           <img src="/img/iconCommunity.png" alt="Community" className="max-w-[40px]"/>
           <span>Join the Community</span>
           <span className="transform transition-transform duration-300 group-hover:translate-x-2"> → </span>
-         </div>
+         </a>
       </div>
     </main>
   );
