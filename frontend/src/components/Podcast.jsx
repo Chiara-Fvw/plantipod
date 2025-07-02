@@ -40,16 +40,25 @@ const PodcastRight = () => {
     <div className="flex-1 flex justify-center items-start p-6 overflow-auto">
       <div className="w-full max-w-md my-auto">
         <ul className="w-full max-w-md space-y-4 text-lg">
-        {episodes.map(({id, episode_num, title, duration }) => (
-          <li key={id} className="flex justify-between border-b border-gray-300 pb-2">
-            <span>{episode_num}.</span>
-            <span className="flex-1 mx-2 truncate">{title}</span>
-            <span>{formatDuration(duration)}</span>
+          {episodes.map(({id, episode_num, title, duration }) => (
+          <li key={id} className="flex justify-between border-b border-gray-300 pb-2 group relative transition-all duration-300">
+            <a 
+              href="/under-construction.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex justify-between items-center w-full">
+                <span>{episode_num}.</span>
+                {/* Title text */}
+                <span className="flex-1 mx-2 truncate relative">
+                  <span className="block group-hover:opacity-0 transition-opacity duration-300">{title}</span>
+                  <span className="absolute inset-0 font-semibold text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-ellipsis whitespace-nowrap overflow-hidden"> Listen on Spotify → </span>
+                </span>
+                <span>{formatDuration(duration)}</span>
+            </a>
           </li>
           ))}
         </ul>
       </div>
-
     </div>
   );
 }
