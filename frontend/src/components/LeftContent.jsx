@@ -1,7 +1,8 @@
-const LeftContent = ({ section }) => {
-  // You can define titles and descriptions in an object:
+import { useLocation } from "react-router-dom";
+
+const LeftContent = () => {
   const contentMap = {
-    Home: {
+    home: {
       title: "Welcome",
       description: (
         <>
@@ -12,7 +13,7 @@ const LeftContent = ({ section }) => {
         </>
       ),
     },
-    Blog: {
+    blog: {
       title: "Blog",
       description: (
         <>
@@ -21,7 +22,7 @@ const LeftContent = ({ section }) => {
         </>
       ),
     },
-    Podcast: {
+    podcast: {
       title: "Podcast",
       description: (
         <>
@@ -30,7 +31,7 @@ const LeftContent = ({ section }) => {
         </>
       ),
     },
-    Courses: {
+    courses: {
       title: "Courses",
       description: (
         <>
@@ -40,8 +41,9 @@ const LeftContent = ({ section }) => {
       ),
     },
   };
-
-  const { title, description } = contentMap[section] || contentMap.Home;
+  const location = useLocation();
+  const section = location.pathname === "/" ? "home" : location.pathname.slice(1);
+  const { title, description } = contentMap[section] || contentMap.home;
 
   return (
     <div className="flex-1 min-h-[300px] md:min-h-0 flex items-center justify-center px-6 py-8 md:py-2 text-center">

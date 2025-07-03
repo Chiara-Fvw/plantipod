@@ -1,15 +1,11 @@
-import { useState } from "react";
-import HomeRight from "./components/Home.jsx"
+import { Routes, Route, Link } from 'react-router-dom';
+import HomeRight from "./components/Home.jsx";
 import BlogRight from "./components/Blog.jsx";
 import CoursesRight from "./components/Courses.jsx";
 import PodcastRight from "./components/Podcast.jsx";
 import LeftContent from "./components/LeftContent.jsx"
 
 const App = () => {
-  const [section, setSection] = useState("Home");
-  const handleClick = (newSection) => {
-    setSection(newSection);
-  }
   return (
     <main className="flex flex-col md:h-screen">
       {/* FULL PAGE CONTENT */}
@@ -20,37 +16,32 @@ const App = () => {
           
           {/* NAVIGATION BUTTONS (Top 4) */}
           <div className="flex w-full pt-1">
-            <button
-              onClick={() => handleClick('Home')}
-              className="nav-button">
+            <Link to="/" className="nav-button">
               <img src="/img/logo2.png" className="max-w-[100px]"/>
-            </button>
-            <button
-              onClick={() => handleClick('Blog')}
-              className="nav-button">
+            </Link>
+            <Link to="/blog" className="nav-button">
               <img src="/img/iconBlog.png" className="max-w-[50px]"/>
-            </button>
-            <button
-              onClick={() => handleClick('Podcast')}
-              className="nav-button">
+            </Link>
+            <Link to="/podcast" className="nav-button">
               <img src="/img/iconPodcast.png" className="max-w-[50px]"/>
-            </button>
-            <button
-              onClick={() => handleClick('Courses')}
-              className="nav-button">
+            </Link>
+            <Link to="/courses" className="nav-button">
               <img src="/img/iconCourse.png" className="max-w-[50px]"/>
-            </button>
+            </Link>
           </div>
 
           {/* TITLE + DESCRIPTION */}
-          <LeftContent section={section} />
+          <LeftContent />
         </div>
 
-      {/* RIGHT SIDE: MAIN SECTIONS */}
-        { section === 'Home' && <HomeRight onClick={handleClick}/>}
-        { section === 'Blog' && <BlogRight />}
-        { section === 'Courses' && <CoursesRight />}
-        { section === 'Podcast' && <PodcastRight />}
+      {/* RIGHT SIDE ROUTING */}
+      <Routes>
+        <Route path="/" element={<HomeRight />} />
+        <Route path="/blog" element={<BlogRight />} />
+        <Route path="/podcast" element={<PodcastRight />} />
+        <Route path="/courses" element={<CoursesRight />} />
+        <Route path="*" element={<HomeRight />} />
+      </Routes>
 
       </div>
 

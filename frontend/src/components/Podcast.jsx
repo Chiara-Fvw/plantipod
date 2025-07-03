@@ -13,8 +13,6 @@ const PodcastRight = () => {
         return res.json();
       })
       .then((data) => {
-        console.log("Episodes data:", data);
-
         setEpisodes(data);
         setLoading(false);
       })
