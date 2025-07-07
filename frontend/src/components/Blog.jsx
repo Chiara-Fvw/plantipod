@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import Post from "./Post.jsx"
 
-const Post = ({data}) => {
+const PostCard = ({data}) => {
   return (
     <div className="relative w-full max-w-md overflow-hidden shadow-lg mb-4 group transition-transform duration-300 hover:scale-[1.02]">
       <img 
@@ -32,15 +34,18 @@ const BlogRight = () => {
 
   return (
     <div className="md:w-1/2 w-full flex flex-col md:h-full mx-6">
-              <div><p>Filtering goes here</p></div>
+      <div><p>Filtering goes here</p></div>
       <div className="min-h-[250px] md:min-h-0 md:flex-1 flex">
-        <div className="md:columns-2 gap-4">
-          {posts.map((postData) => (
-            <Post key={postData.id} data={postData} />
-          ))}
-        </div>
-
+      <div className="md:columns-2 gap-4">
+        {posts.map((postData) => (
+          <PostCard key={postData.id} data={postData} />
+        ))}
       </div>
+    </div>
+
+      <Routes>
+        <Route path=":id" element={<Post />} />
+      </Routes>
     </div>
   );
 }
