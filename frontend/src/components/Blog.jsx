@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
-import Post from "./Post.jsx"
+import { Routes, Route, Link } from "react-router-dom";
+import Post from "./Post.jsx";
 
 const PostCard = ({data}) => {
   return (
@@ -36,16 +36,14 @@ const BlogRight = () => {
     <div className="md:w-1/2 w-full flex flex-col md:h-full mx-6">
       <div><p>Filtering goes here</p></div>
       <div className="min-h-[250px] md:min-h-0 md:flex-1 flex">
-      <div className="md:columns-2 gap-4">
-        {posts.map((postData) => (
-          <PostCard key={postData.id} data={postData} />
-        ))}
+        <div className="md:columns-2 gap-4">
+          {posts.map((postData) => (
+            <Link key={postData.id} to={`/blog/${postData.id}`} >
+              <PostCard data={postData} />
+            </Link>
+          ))}
+        </div>
       </div>
-    </div>
-
-      <Routes>
-        <Route path=":id" element={<Post />} />
-      </Routes>
     </div>
   );
 }

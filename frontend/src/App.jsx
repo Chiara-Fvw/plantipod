@@ -1,11 +1,23 @@
 import { Routes, Route, Link } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import HomeRight from "./components/Home.jsx";
 import BlogRight from "./components/Blog.jsx";
 import CoursesRight from "./components/Courses.jsx";
 import PodcastRight from "./components/Podcast.jsx";
-import LeftContent from "./components/LeftContent.jsx"
+import LeftContent from "./components/LeftContent.jsx";
+import Post from "./components/Post.jsx";
+import { useState } from 'react';
 
 const App = () => {
+  const location = useLocation();
+  const isPostRoute = location.pathname.startsWith('/blog/');
+  const [postMetadata, setPostMetadata] = useState(null);
+
+  const section = !isPostRoute 
+    ? location.pathname === "/" ? "home" : location.pathname.slice(1) 
+    : null;
+
+
   return (
     <main className="flex flex-col md:h-screen">
       {/* FULL PAGE CONTENT */}
@@ -31,14 +43,17 @@ const App = () => {
           </div>
 
           {/* TITLE + DESCRIPTION */}
-          <LeftContent />
+          <LeftContent 
+            section={section} 
+            postMetadata={postMetadata}
+          />
         </div>
 
       {/* RIGHT SIDE ROUTING */}
       <Routes>
         <Route path="/" element={<HomeRight />} />
         <Route path="/blog" element={<BlogRight />} />
-        <Route path="/blog/*" element={<BlogRight />} />
+        <Route path="/blog/:id" element={<Post setPostMetadata={setPostMetadata}/>} />
         <Route path="/podcast" element={<PodcastRight />} />
         <Route path="/courses" element={<CoursesRight />} />
         <Route path="*" element={<HomeRight />} />

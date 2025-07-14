@@ -1,6 +1,4 @@
-import { useLocation } from "react-router-dom";
-
-const LeftContent = () => {
+const LeftContent = ({ section, postMetadata }) => {
   const contentMap = {
     home: {
       title: "Welcome",
@@ -41,8 +39,19 @@ const LeftContent = () => {
       ),
     },
   };
-  const location = useLocation();
-  const section = location.pathname === "/" ? "home" : location.pathname.slice(1);
+
+    if (postMetadata) {
+    // Render post metadata instead of contentMap
+    return (
+      <div className="flex-1 min-h-[300px] md:min-h-0 flex items-center justify-center px-6 py-8 md:py-2 text-center">
+        <div>
+          <h1 className="text-6xl font-name text-main mb-[10vh]">{postMetadata.title}</h1>
+          <div className="mt-4 text-lg text-gray-600">{postMetadata.description}</div>
+        </div>
+      </div>
+    );
+  }
+
   const { title, description } = contentMap[section] || contentMap.home;
 
   return (
