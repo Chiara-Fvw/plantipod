@@ -18,12 +18,16 @@ blogRouter.get('/', async (req, res, next) => {
 blogRouter.get('/:id', async (req, res, next) => {
   const { id } = req.params;
   try {
-    const result = await pool.query('SELECT * FROM blog_posts WHERE id = $1', [id]);
+    const postResult = await pool.query('SELECT * FROM blog_posts WHERE id = $1', [id]);
+    const imgResult = await pool.query('SELECT * FROM blog_images WHERE blog_id = $1 ORDER BY position ASC', [id]);
 
-    if (result.rows.length === 0) {
+    if (postResult.rows.length === 0) {
       return res.status(404).json({error: 'Post not found'})
     }
-    res.json(result.rows[0]);
+    res.json({
+      ...postResult.rows[0],
+      images: imgResult.rows,
+    });
   } catch (err) {
     next(err);
   }
