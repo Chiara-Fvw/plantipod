@@ -149,6 +149,8 @@ npm run dev
 - Community bot for Discord
 - Course analytics dashboard
 
+📝 Note: Blog post content is stored as raw HTML. This allows future integration with a WYSIWYG editor for CMS functionality. It’s rendered safely via dangerouslySetInnerHTML with trusted input.
+
 ---
 
 ## 📚 Documentation
