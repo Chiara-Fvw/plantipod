@@ -4,6 +4,7 @@ const router = express.Router();
 import blogRouter from './blog.js';
 import coursesRouter from './courses.js';
 import podcastsRouter from './podcasts.js';
+import spotifyRouter from "./spotify.js";
 
 router.get('/', (req, res, next) => {
   try {
@@ -23,5 +24,6 @@ router.get('/', (req, res, next) => {
 router.use('/blog', blogRouter);
 router.use('/courses', coursesRouter);
 router.use('/podcasts', podcastsRouter);
+router.use('/spotify', spotifyRouter);
 
 export default router;
