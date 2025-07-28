@@ -7,7 +7,7 @@ const PodcastRight = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/podcasts')
+    fetch('http://localhost:3001/api/spotify')
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch episodes.");
         return res.json();
@@ -29,10 +29,10 @@ const PodcastRight = () => {
     <div className="flex-1 flex justify-center items-start p-6 overflow-auto">
       <div className="w-full max-w-md my-auto">
         <ul className="w-full max-w-md space-y-4 text-lg">
-          {episodes.map(({id, episode_num, title, duration }) => (
+          {episodes.map(({id, episode_num, title, duration, spotifyUrl }) => (
           <li key={id} className="flex justify-between border-b border-gray-300 pb-2 group relative transition-all duration-300">
             <a 
-              href="/under-construction.html"
+              href={spotifyUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="flex justify-between items-center w-full">

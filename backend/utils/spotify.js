@@ -1,4 +1,5 @@
 import { getSpotifyAccessToken } from "./spotifyAuth.js";
+import { durationMsToObject } from "./formatDurationMs.js";
 
 export async function searchSpotifyEpisodes() {
   const token = await getSpotifyAccessToken();
@@ -23,7 +24,7 @@ export async function searchSpotifyEpisodes() {
     id: ep.id,
     title: ep.name,
     description: ep.description,
-    duration_ms: ep.duration_ms,
+    duration: durationMsToObject(ep.duration_ms),
     image: ep.images[0]?.url || null,
     spotifyUrl: ep.external_urls.spotify,
     releaseDate: ep.release_date,

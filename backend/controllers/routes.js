@@ -13,7 +13,8 @@ router.get('/', (req, res, next) => {
       endpoints: {
         blog: "/api/blog",
         courses: "/api/courses",
-        podcast: "api/podcasts"
+        podcast: "api/podcasts",
+        spotify: "/api/spotify"
       }
     })
   } catch (err) {
