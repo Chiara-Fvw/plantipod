@@ -45,7 +45,7 @@ coverage/
 # Database or local data
 *.sqlite
 *.db
-*.sql
+!backend/db/*.sql
 
 # Deployment platform folders
 .vercel/
