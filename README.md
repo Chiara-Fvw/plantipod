@@ -58,26 +58,32 @@ PlantiPod is designed to:
 
 ```
 plantipod/
-├── backend/          
+├── backend/
 │   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   ├── middleware/
-│   └── server.js
+│   ├── db/
+│   ├── public/
+│   ├── utils/
+│   ├── .env                # (local only, ignored by git)
+│   ├── .env.example
+│   ├── app.js
+│   ├── index.js
+│   ├── package.json
+│   └── package-lock.json
 │
-├── frontend/         
-│   ├── components/
-│   ├── pages/
-│   ├── services/
-│   └── App.jsx
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   ├── .env                # (local only, ignored by git)
+│   ├── .gitignore
+│   ├── tailwind.config.js
+│   ├── vite.config.js
+│   ├── package.json
+│   └── package-lock.json
 │
-├── admin/            # (Planned) CMS panel for blog posts
-│
-│
-├── public/          
-├── README.md
+├── .gitignore
 ├── LICENSE
-└── .gitignore
+└── README.md
+
 ```
 
 ---
@@ -92,7 +98,7 @@ plantipod/
 - PostgreSQL  
 - npm or yarn  
 
-### 1. Clone the Repo
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/Chiara-Fvw/plantipod.git
@@ -101,7 +107,13 @@ cd plantipod
 
 ### 2. Backend & Database Setup
 
-#### 2.1 Create Environment Variables
+#### 2.1 Install Dependencies
+```bash
+cd backend
+npm install
+```
+
+#### 2.2 Create Environment Variables
 Inside /backend, create a `.env` file based on `.env.example`:
 
 ```env
@@ -113,22 +125,37 @@ DB_NAME=plantipod
 PORT=3001
 ```
 
-#### 2.2 Run Setup Commands
+#### 2.3 Initialize Database
+Run the following commands to start PostgreSQL (macOS/Linux), create tables and seed the database:
 ```bash
-npm run pgstart   # Start PostgreSQL service (macOS/Linux)
+npm run pgstart   # Start PostgreSQL service
 npm run db:init   # Create tables
 npm run db:seed   # Insert sample data
+```
+#### 2.4 Start the Backend server
+
+```bash
 npm run dev       # Start backend server
 ```
 
 ### 3. Frontend Setup
+Open a new terminal and run:
+
 ```bash
-cd ../frontend
+cd frontend
 npm install
 npm run dev
 ```
+
+Your app will now be running locally:
+
 Frontend: http://localhost:5173
 Backend API: http://localhost:3001
+
+✅ Notes
+- Make sure PostgreSQL is installed and running locally.
+- Environment variables are not committed; use .env.example as a reference.
+- The CMS for managing blog posts is currently in development.
 
 ---
 
