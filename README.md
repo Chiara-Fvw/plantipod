@@ -1,34 +1,34 @@
 # 🌿 PlantiPod
 
-**PlantiPod** is a full-stack web application built as a portfolio project for a fictional plant care content creator. The app centralizes content creation — including blogs, online courses, and podcasts — while also fostering a sense of community through Discord integration.
-
-This project demonstrates full CRUD operations, RESTful API design, and modern web development practices using a professional project structure and real deployment.
+PlantiPod is a full-stack web application built as a portfolio project for a fictional plant care content creator.
+It centralizes content — blog posts, online courses, and podcasts — and will later expand to include a community section via Discord.
+This project demonstrates full CRUD operations, RESTful API design, and modern web development practices with a professional project structure and upcoming deployment on Render.
 
 ---
 
 ## 🚀 Live Demo
 
-🌐 App: [https://plantipod.vercel.app](https://plantipod.vercel.app)  
-💻 Code: [https://github.com/your-username/plantipod](https://github.com/your-username/plantipod)
+🌐 App:   (coming soon – deploying to Render)
+💻 Code:  [https://github.com/Chiara-Fvw/plantipod]
 
 ---
 
 ## ✨ Project Overview
 
 PlantiPod is designed to:
-- Provide a unified space for plant-based content creators to share blog posts, offer courses, and host podcasts.
-- Foster a plant-loving community using a Discord server.
-- Allow integration with external APIs (e.g., Spotify, Hotmart) — currently mocked.
-- Demonstrate full-stack development skills with clear frontend/backend separation.
+- Provide a unified space for sharing plant-based content: blog posts, courses, and podcasts.
+- Foster a plant-loving community with Discord integration (planned).
+- Show integrations with external APIs — real (Spotify) and mocked (Hotmart).
+- Demonstrate frontend/backend separation in a portfolio-ready full-stack project.
+- Introduce a CMS for blog post creation and management (currently under development).
 
 ---
 
 ## 🧩 Features
-
-- **📝 Blog**: Full CRUD for plant care articles.
-- **🎓 Courses**: Three mocked courses simulating Hotmart-style content.
-- **🎧 Podcast**: Spotify-like layout with placeholder episodes.
-- **💬 Community**: Discord server integration for plant lovers to chat and share tips.
+📝 Blog – Full CRUD for plant care articles (stored in PostgreSQL).
+🎓 Courses – Mocked courses simulating Hotmart-style content.
+🎧 Podcast – Displays a list of episodes fetched dynamically from Spotify’s API, showing episode number, title, and metadata.
+💬 Community – Coming soon: Discord server integration for plant lovers.
 
 ---
 
@@ -47,9 +47,10 @@ PlantiPod is designed to:
 - **Tailwind CSS** (or CSS Modules)
 
 ### External / Mocked Integrations
-- **Discord** (real server)
-- **Spotify API (mocked)** for podcast episodes
-- **Hotmart API (mocked)** for courses
+
+- Spotify API real integration for fetching podcast episodes
+- Hotmart API (mocked) for courses
+- Discord (*planned* real server integration)
 
 ---
 
@@ -57,26 +58,23 @@ PlantiPod is designed to:
 
 ```
 plantipod/
-├── backend/          # Node.js + Express + PostgreSQL API
+├── backend/          
 │   ├── controllers/
 │   ├── models/
 │   ├── routes/
 │   ├── middleware/
 │   └── server.js
 │
-├── frontend/         # React app (main user interface)
+├── frontend/         
 │   ├── components/
 │   ├── pages/
 │   ├── services/
 │   └── App.jsx
 │
-├── admin/            # (Optional) CMS panel – under consideration
+├── admin/            # (Planned) CMS panel for blog posts
 │
-├── doc/              # Documentation
-│   ├── journal.md
-│   └── roadmap.md
 │
-├── public/           # Shared static assets
+├── public/          
 ├── README.md
 ├── LICENSE
 └── .gitignore
@@ -97,15 +95,15 @@ plantipod/
 ### 1. Clone the Repo
 
 ```bash
-git clone https://github.com/your-username/plantipod.git
+git clone https://github.com/Chiara-Fvw/plantipod.git
 cd plantipod
 ```
 
 ### 2. Backend & Database Setup
-Follow these steps to prepare and run the backend along with your PostgreSQL database.
 
-#### 2.1 Prepare Environment Variables
-Create a .env file inside the backend folder based on .env.example and set your PostgreSQL credentials:
+#### 2.1 Create Environment Variables
+Inside /backend, create a `.env` file based on `.env.example`:
+
 ```env
 DB_USER=your_db_user
 DB_PASSWORD=your_db_password
@@ -115,48 +113,35 @@ DB_NAME=plantipod
 PORT=3001
 ```
 
-If you use no password locally, you can leave DB_PASSWORD empty but it’s safer to have one.
-
 #### 2.2 Run Setup Commands
-From the backend directory, run these commands in order:
-
 ```bash
-npm run pgstart      # Start PostgreSQL service (macOS)
-npm run db:init      # Run schema.sql to create tables
-npm run db:seed     # Run seed.sql to insert sample data
-npm run dev         # Start backend server with nodemon
+npm run pgstart   # Start PostgreSQL service (macOS/Linux)
+npm run db:init   # Create tables
+npm run db:seed   # Insert sample data
+npm run dev       # Start backend server
 ```
 
 ### 3. Frontend Setup
-
 ```bash
 cd ../frontend
 npm install
 npm run dev
 ```
-
-- Frontend: [http://localhost:5173](http://localhost:5173)  
-- Backend API: [http://localhost:3001](http://localhost:3001)
+Frontend: http://localhost:5173
+Backend API: http://localhost:3001
 
 ---
 
 ## 🌱 Future Plans
 
-- Real API integration with Spotify and Hotmart
-- CMS panel for content creators
+- Real Hotmart API integration
+- CMS panel for content creators (blog & courses)
 - User authentication and roles
-- Mobile responsiveness
-- Community bot for Discord
-- Course analytics dashboard
+- Mobile responsiveness improvements
+- Discord bot integration
+- Analytics dashboard for courses
 
 📝 Note: Blog post content is stored as raw HTML. This allows future integration with a WYSIWYG editor for CMS functionality. It’s rendered safely via dangerouslySetInnerHTML with trusted input.
-
----
-
-## 📚 Documentation
-
-- [🛤 Project Roadmap](./doc/roadmap.md)
-- [📔 Developer Journal](./doc/journal.md)
 
 ---
 
