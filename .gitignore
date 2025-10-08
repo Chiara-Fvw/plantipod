@@ -53,3 +53,5 @@ coverage/
 
 # Linter cache
 .eslintcache
+
+doc/
