@@ -34,10 +34,10 @@ coursesRouter.post('/', courseValidationRules, async (req, res, next) => {
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array()});
   }
-  
-  const {title, description, total_duration} = req.body;
+
+  const {title, description, img, total_duration} = req.body;
   try {
-    const response = await pool.query(`INSERT INTO courses (title, description, total_duration) VALUES ($1, $2, $3) RETURNING *`, [title, description, total_duration]);
+    const response = await pool.query(`INSERT INTO courses (title, description, img, total_duration) VALUES ($1, $2, $3, $4) RETURNING *`, [title, description, img, total_duration]);
     if (response.rowCount === 0) return res.status(400).json({error: 'Can not create the course.'});
     res.status(201).json(response.rows[0]);
   } catch (err) {
