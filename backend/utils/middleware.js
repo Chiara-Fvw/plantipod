@@ -1,7 +1,7 @@
 import logger from "./logger.js";
 
 const errorHandler = (err, req, res, next) => {
-  logger.error(err.messge);
+  logger.error(err.message);
 
   if (err.name === 'CastError') {
     return res.status(400).send({error: 'malformatted '})
