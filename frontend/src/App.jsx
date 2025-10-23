@@ -1,5 +1,5 @@
 import { Routes, Route, Link } from 'react-router-dom';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import HomeRight from "./components/Home.jsx";
 import BlogRight from "./components/Blog.jsx";
 import CoursesRight from "./components/Courses.jsx";
