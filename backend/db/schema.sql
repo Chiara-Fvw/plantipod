@@ -48,13 +48,3 @@ CREATE TABLE course_modules (
   duration INTERVAL NOT NULL,
   UNIQUE(course_id, module_number)
 );
-
-CREATE TABLE course_modules (
-  id SERIAL PRIMARY KEY,
-  course_id INTEGER REFERENCES courses(id) ON DELETE CASCADE,
-  module_number INTEGER NOT NULL,
-  module_title TEXT NOT NULL,
-  module_description TEXT,
-  duration INTERVAL NOT NULL,
-  UNIQUE(course_id, module_number)
-);
