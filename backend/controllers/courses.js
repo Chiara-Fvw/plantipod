@@ -5,7 +5,7 @@ import { validationResult } from 'express-validator';
 
 const coursesRouter = express.Router();
 
-coursesRouter.get('/', async (req, res) => {
+coursesRouter.get('/', async (req, res, next) => {
   try {
     const result = await pool.query('SELECT * FROM courses');
     const courses = result.rows;
@@ -37,7 +37,7 @@ coursesRouter.post('/', courseValidationRules, async (req, res, next) => {
   
   const {title, description, total_duration} = req.body;
   try {
-    const response = await pool.query(`INSERT INTO courses (title, description, total_duration) VALUES ($1, $2, $3)`, [title, description, total_duration]);
+    const response = await pool.query(`INSERT INTO courses (title, description, total_duration) VALUES ($1, $2, $3) RETURNING *`, [title, description, total_duration]);
     if (response.rowCount === 0) return res.status(400).json({error: 'Can not create the course.'});
     res.status(201).json(response.rows[0]);
   } catch (err) {
@@ -47,10 +47,11 @@ coursesRouter.post('/', courseValidationRules, async (req, res, next) => {
 
 coursesRouter.put('/:id', async (req, res, next) => {
   const id = req.params.id;
-  const updates = Object.entries(req.body);
+  const allowedFields = ['title', 'description', 'img', 'total_duration'];
+  const updates = Object.entries(req.body).filter(([key]) => allowedFields.includes(key));
 
   if (updates.length === 0) {
-    return res.status(404).json({error: 'No fields to update'});
+    return res.status(400).json({error: 'No valid fields to update'});
   }
 
   const fields = updates.map(([key], index) => `${key} = $${index + 1}`).join(', ');
