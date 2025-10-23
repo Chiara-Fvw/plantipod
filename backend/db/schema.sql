@@ -18,7 +18,7 @@ CREATE TABLE blog_images (
   id SERIAL PRIMARY KEY,
   blog_id INTEGER NOT NULL REFERENCES blog_posts(id) ON DELETE CASCADE,
   url TEXT NOT NULL,
-  position INTEGER CHECK (position IN (1, 2)),
+  position INTEGER CHECK (position >= 1),
   alt_text VARCHAR (255)
 );
 
