@@ -46,9 +46,10 @@ const Post = ({ setPostMetadata }) => {
           className="w-full h-auto mb-6 rounded-lg shadow-md" 
         />
       )}
-      <div className="prose max-w-none text-gray-700">
-        {post.content}
-      </div>
+      <div
+        className="prose max-w-none text-gray-700"
+        dangerouslySetInnerHTML={{ __html: post.content }}
+      />
       {post.images?.slice(1).map((img, i) => (
         <img 
           key={i}

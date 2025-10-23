@@ -2,6 +2,7 @@ import express from 'express';
 import pool from '../db/init.js';
 import { blogValidationRules } from '../utils/validations.js';
 import { validationResult } from 'express-validator';
+import DOMPurify from 'isomorphic-dompurify';
 
 const blogRouter = express.Router();
 
@@ -38,10 +39,12 @@ blogRouter.post('/', blogValidationRules, async (req, res, next) => {
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array()});
   }
-  
+
   const {title, content} = req.body;
+  const sanitizedContent = DOMPurify.sanitize(content);
+
   try {
-    const response = await pool.query(`INSERT INTO blog_posts (title, content) VALUES ($1, $2) RETURNING *`, [title, content]);
+    const response = await pool.query(`INSERT INTO blog_posts (title, content) VALUES ($1, $2) RETURNING *`, [title, sanitizedContent]);
     if (response.rowCount === 0) return res.status(400).json({error: 'Can not create the post.'});
     res.status(201).json(response.rows[0]);
   } catch (err) {
@@ -51,10 +54,17 @@ blogRouter.post('/', blogValidationRules, async (req, res, next) => {
 
 blogRouter.put('/:id', async (req, res, next) => {
   const id = req.params.id;
-  const updates = Object.entries(req.body);
+  const allowedFields = ['title', 'content'];
+
+  // Sanitize content if it's being updated
+  if (req.body.content) {
+    req.body.content = DOMPurify.sanitize(req.body.content);
+  }
+
+  const updates = Object.entries(req.body).filter(([key]) => allowedFields.includes(key));
 
   if (updates.length === 0) {
-    return res.status(404).json({error: 'No fields to update'});
+    return res.status(400).json({error: 'No valid fields to update'});
   }
 
   const fields = updates.map(([key], index) => `${key} = $${index + 1}`).join(', ');
