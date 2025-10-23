@@ -37,7 +37,7 @@ podcastsRouter.post('/', podcastValidationRules, async (req, res, next) => {
   
   const {episode_num, title, release_date, duration} = req.body;
   try {
-    const response = await pool.query(`INSERT INTO podcasts (episode_num, title, release_date, duration) VALUES ($1, $2, $3, $4)`, [episode_num, title, release_date, duration]);
+    const response = await pool.query(`INSERT INTO podcasts (episode_num, title, release_date, duration) VALUES ($1, $2, $3, $4) RETURNING *`, [episode_num, title, release_date, duration]);
     if (response.rowCount === 0) return res.status(400).json({error: 'Can not create the podcast episode.'});
     res.status(201).json(response.rows[0]);
   } catch (err) {
