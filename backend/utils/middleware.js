@@ -1,4 +1,5 @@
 import logger from "./logger.js";
+import config from "./config.js";
 
 const errorHandler = (err, req, res, next) => {
   logger.error(err.message);
@@ -9,7 +10,16 @@ const errorHandler = (err, req, res, next) => {
     return res.status(400).json({error: err.message})
   }
 
-  next(err);
+  // In production, don't expose internal error details
+  if (config.NODE_ENV === 'production') {
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+
+  // In development, show detailed error
+  res.status(500).json({
+    error: err.message,
+    stack: err.stack
+  });
 }
 
 const unknownEndpoint = (req, res) => {
