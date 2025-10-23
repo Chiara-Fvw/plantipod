@@ -5,7 +5,7 @@ import { validationResult } from 'express-validator';
 
 const podcastsRouter = express.Router();
 
-podcastsRouter.get('/', async (req, res) => {
+podcastsRouter.get('/', async (req, res, next) => {
   try {
     const result = await pool.query('SELECT * FROM podcasts');
     const podcasts = result.rows;
