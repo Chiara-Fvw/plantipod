@@ -47,10 +47,11 @@ podcastsRouter.post('/', podcastValidationRules, async (req, res, next) => {
 
 podcastsRouter.put('/:id', async (req, res, next) => {
   const id = req.params.id;
-  const updates = Object.entries(req.body);
+  const allowedFields = ['episode_num', 'title', 'description', 'release_date', 'duration'];
+  const updates = Object.entries(req.body).filter(([key]) => allowedFields.includes(key));
 
   if (updates.length === 0) {
-    return res.status(404).json({error: 'No fields to update'});
+    return res.status(400).json({error: 'No valid fields to update'});
   }
 
   const fields = updates.map(([key], index) => `${key} = $${index + 1}`).join(', ');
