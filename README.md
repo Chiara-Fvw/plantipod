@@ -2,14 +2,17 @@
 
 PlantiPod is a full-stack web application built as a portfolio project for a fictional plant care content creator.
 It centralizes content — blog posts, online courses, and podcasts — and will later expand to include a community section via Discord.
-This project demonstrates full CRUD operations, RESTful API design, and modern web development practices with a professional project structure and upcoming deployment on Render.
+This project demonstrates full CRUD operations, RESTful API design, and modern web development practices with a professional project structure, deployed on Render with Supabase PostgreSQL database.
 
 ---
 
 ## 🚀 Live Demo
 
-🌐 App:   (coming soon – deploying to Render)
-💻 Code:  [https://github.com/Chiara-Fvw/plantipod]
+🌐 **Live App:** [https://plantipod.onrender.com](https://plantipod.onrender.com)
+🔌 **API Backend:** [https://plantipod-backend.onrender.com/api](https://plantipod-backend.onrender.com/api)
+💻 **Code:** [https://github.com/Chiara-Fvw/plantipod](https://github.com/Chiara-Fvw/plantipod)
+
+> **Note:** The app is hosted on Render's free tier. If inactive for 15 minutes, the service spins down and may take 30-60 seconds to wake up on the first request.
 
 ---
 
@@ -36,15 +39,16 @@ PlantiPod is designed to:
 
 ### Backend
 - **Node.js**, **Express.js**
-- **PostgreSQL** with **Sequelize**
+- **PostgreSQL** (hosted on **Supabase**)
 - **REST API** with full CRUD operations
 - **Environment variables**, **middleware**, and modular structure
+- **Deployed on Render**
 
 ### Frontend
-- **React.js**
-- **Axios** for HTTP requests
+- **React.js** with **Vite**
 - **React Router** for client-side routing
-- **Tailwind CSS** (or CSS Modules)
+- **Tailwind CSS** for styling
+- **Deployed on Render**
 
 ### External / Mocked Integrations
 
