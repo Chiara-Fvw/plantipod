@@ -5,9 +5,9 @@ import Post from "./Post.jsx";
 const PostCard = ({data}) => {
   return (
     <div className="relative w-full max-w-md overflow-hidden shadow-lg mb-4 group transition-transform duration-300 hover:scale-[1.02]">
-      <img 
-        src={`http://localhost:3001/${data.image_url}`} 
-        alt="Post thumbnail" 
+      <img
+        src={`${import.meta.env.VITE_API_URL}/${data.image_url}`}
+        alt="Post thumbnail"
         className="w-full object-cover"
       />
       <div className="absolute bottom-0 left-0 right-0 bg-white p-4 mx-2 my-1 group-hover:bg-main transition-colors duration-300">
@@ -23,7 +23,7 @@ const BlogRight = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/blog')
+    fetch(`${import.meta.env.VITE_API_URL}/api/blog`)
       .then(res => {
         if (!res.ok) throw new Error('Failed to fetch posts.');
         return res.json();        

@@ -7,7 +7,7 @@ const PodcastRight = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/spotify')
+    fetch(`${import.meta.env.VITE_API_URL}/api/spotify`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch episodes.");
         return res.json();

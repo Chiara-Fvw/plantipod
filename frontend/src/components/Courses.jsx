@@ -12,7 +12,7 @@ const Course = ({data}) => {
       </div>
       <div className="grid grid-cols-2">
         <div className="h-48">
-          <img src={`http://localhost:3001${data.img}`} alt={data.title} className="w-full h-full object-cover" />
+          <img src={`${import.meta.env.VITE_API_URL}${data.img}`} alt={data.title} className="w-full h-full object-cover" />
         </div>
         <div className="p-4 flex items-center justify-center text-gray-700 text-sm bg-white relative">
           <p> { data.description } </p>
@@ -31,7 +31,7 @@ const CoursesRight = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/courses')
+    fetch(`${import.meta.env.VITE_API_URL}/api/courses`)
       .then(res => {
         if(!res.ok) throw new Error('Failed to fetch courses.');
         return res.json();
